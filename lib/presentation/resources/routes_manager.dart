@@ -1,16 +1,14 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 import 'package:section2/app/di.dart';
 import 'package:section2/presentation/forgot_password/forgot_password.dart';
 import 'package:section2/presentation/login/login.dart';
 import 'package:section2/presentation/main/main_view.dart';
+import 'package:section2/presentation/onboarding/onboarding.dart';
+import 'package:section2/presentation/register/register.dart';
 import 'package:section2/presentation/resources/strings_manager.dart';
+import 'package:section2/presentation/splash/splash.dart';
 import 'package:section2/presentation/store_details/store_details.dart';
-
-import '../onboarding/onboarding.dart';
-import '../register/register.dart';
-import '../splash/splash.dart';
+import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:easy_localization/easy_localization.dart';
 
 class Routes {
   static const String splashRoute = "/";
@@ -19,7 +17,7 @@ class Routes {
   static const String registerRoute = "/register";
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String mainRoute = "/main";
-  static const String storeDetailRoute = "/storeDetail";
+  static const String storeDetailsRoute = "/storeDetails";
 }
 
 class RouteGenerator {
@@ -33,28 +31,29 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => OnBoardingView());
       case Routes.registerRoute:
+        initRegisterModule();
         return MaterialPageRoute(builder: (_) => RegisterView());
       case Routes.forgotPasswordRoute:
+        initForgotPasswordModule();
         return MaterialPageRoute(builder: (_) => ForgotPasswordView());
       case Routes.mainRoute:
+        initHomeModule();
         return MaterialPageRoute(builder: (_) => MainView());
-      case Routes.storeDetailRoute:
+      case Routes.storeDetailsRoute:
+        initStoreDetailsModule();
         return MaterialPageRoute(builder: (_) => StoreDetailsView());
       default:
-        return UnDefinedRoute();
+        return unDefinedRoute();
     }
   }
 
-  static Route<dynamic> UnDefinedRoute() {
+  static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
-      builder: (_) => Scaffold(
-        appBar: AppBar(
-          title: Text(AppStrings.noRouteFound),
-        ),
-        body: Center(
-          child: Text(AppStrings.noRouteFound),
-        ),
-      ),
-    );
+        builder: (_) => Scaffold(
+              appBar: AppBar(
+                title: Text(AppStrings.noRouteFound).tr(),
+              ),
+              body: Center(child: Text(AppStrings.noRouteFound).tr()),
+            ));
   }
 }

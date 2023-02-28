@@ -1,25 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:section2/app/app.dart';
+ import 'package:section2/app/app.dart';
+import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
 
-class Test extends StatefulWidget {
-  const Test({super.key});
+class Test extends StatelessWidget {
+   const Test({Key? key}) : super(key: key);
 
-  @override
-  State<Test> createState() => _TestState();
-  
-  updateAppState() {
-    MyApp.instance.appState = 10;
-  }
+   void updateAppState(){
+     MyApp.instance.appState =10;
+   }
+   void getAppState(){
+     print( MyApp.instance.appState); // 10
+   }
 
-  getAppState() {
-    print(MyApp.instance.appState);
-  }
-}
-
-class _TestState extends State<Test> {
-  
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
+   @override
+   Widget build(BuildContext context) {
+     return Container();
+   }
+ }

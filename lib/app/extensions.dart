@@ -1,5 +1,5 @@
-
 // extension on String
+
 import 'package:section2/data/mapper/mapper.dart';
 
 extension NonNullString on String? {
@@ -13,6 +13,7 @@ extension NonNullString on String? {
 }
 
 // extension on Integer
+
 extension NonNullInteger on int? {
   int orZero() {
     if (this == null) {
