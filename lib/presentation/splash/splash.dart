@@ -5,7 +5,7 @@ import 'package:section2/app/di.dart';
 import 'package:section2/presentation/resources/assets_manager.dart';
 import 'package:section2/presentation/resources/color_manager.dart';
 import 'package:section2/presentation/resources/routes_manager.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({Key? key}) : super(key: key);

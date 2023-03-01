@@ -2,7 +2,7 @@ import 'package:section2/app/app_prefs.dart';
 import 'package:section2/app/di.dart';
 import 'package:section2/presentation/resources/routes_manager.dart';
 import 'package:section2/presentation/resources/theme_manager.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class MyApp extends StatefulWidget {

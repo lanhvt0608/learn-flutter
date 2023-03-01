@@ -2,7 +2,7 @@ import 'package:section2/presentation/resources/color_manager.dart';
 import 'package:section2/presentation/resources/font_manager.dart';
 import 'package:section2/presentation/resources/styles_manager.dart';
 import 'package:section2/presentation/resources/values_manager.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(

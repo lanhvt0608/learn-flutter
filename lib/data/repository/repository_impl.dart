@@ -128,6 +128,7 @@ class RepositoryImpl extends Repository {
                 response.message ?? ResponseMessage.DEFAULT));
           }
         } catch (error) {
+          print(error);
           return (Left(ErrorHandler.handle(error).failure));
         }
       } else {

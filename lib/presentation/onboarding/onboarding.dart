@@ -8,7 +8,7 @@ import 'package:section2/presentation/resources/routes_manager.dart';
 import 'package:section2/presentation/resources/strings_manager.dart';
 import 'package:section2/presentation/resources/values_manager.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';

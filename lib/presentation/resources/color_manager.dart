@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 
 class ColorManager {
   static Color primary = HexColor.fromHex("#ED9728");

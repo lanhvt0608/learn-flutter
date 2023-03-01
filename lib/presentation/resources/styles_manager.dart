@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 
 import 'font_manager.dart';
 

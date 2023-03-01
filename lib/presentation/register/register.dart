@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:country_picker/country_picker.dart';
 import 'package:section2/app/app_prefs.dart';
 import 'package:section2/app/di.dart';
 import 'package:section2/data/mapper/mapper.dart';
@@ -10,8 +11,7 @@ import 'package:section2/presentation/resources/color_manager.dart';
 import 'package:section2/presentation/resources/routes_manager.dart';
 import 'package:section2/presentation/resources/strings_manager.dart';
 import 'package:section2/presentation/resources/values_manager.dart';
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -36,6 +36,7 @@ class _RegisterViewState extends State<RegisterView> {
       TextEditingController();
   TextEditingController _emailEditingController = TextEditingController();
   TextEditingController _passwordEditingController = TextEditingController();
+  String _countryCode = "";
 
   @override
   void initState() {
@@ -68,6 +69,12 @@ class _RegisterViewState extends State<RegisterView> {
         _appPreferences.setIsUserLoggedIn();
         Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
       });
+    });
+  }
+
+  _updateCoutryText(String value) {
+    setState(() {
+      _countryCode = value;
     });
   }
 
@@ -131,34 +138,39 @@ class _RegisterViewState extends State<RegisterView> {
                     child: Row(
                       children: [
                         Expanded(
-                            flex: 1,
-                            child: CountryCodePicker(
-                              onChanged: (country) {
-                                // update view model with the selected code
-                                _viewModel
-                                    .setCountryCode(country.dialCode ?? EMPTY);
-                              },
-                              initialSelection: "+33",
-                              showCountryOnly: true,
-                              hideMainText: true,
-                              showOnlyCountryWhenClosed: true,
-                              favorite: ["+966", "+02", "+39"],
-                            )),
+                          flex: 1,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              showCountryPicker(
+                                context: context,
+                                showPhoneCode:
+                                    true, // optional. Shows phone code before the country name.
+                                onSelect: (Country country) {
+                                  _viewModel
+                                      .setCountryCode(country.countryCode);
+                                  _updateCoutryText(country.countryCode);
+                                },
+                              );
+                            },
+                            child: Text(_countryCode),
+                          ),
+                        ),
                         Expanded(
-                            flex: 3,
-                            child: StreamBuilder<String?>(
-                              stream: _viewModel.outputErrorMobileNumber,
-                              builder: (context, snapshot) {
-                                return TextFormField(
-                                    keyboardType: TextInputType.phone,
-                                    controller:
-                                        _mobileNumberTextEditingController,
-                                    decoration: InputDecoration(
-                                        hintText: AppStrings.mobileNumber.tr(),
-                                        labelText: AppStrings.mobileNumber.tr(),
-                                        errorText: snapshot.data));
-                              },
-                            ))
+                          flex: 5,
+                          child: StreamBuilder<String?>(
+                            stream: _viewModel.outputErrorMobileNumber,
+                            builder: (context, snapshot) {
+                              return TextFormField(
+                                keyboardType: TextInputType.phone,
+                                controller: _mobileNumberTextEditingController,
+                                decoration: InputDecoration(
+                                    hintText: AppStrings.mobileNumber.tr(),
+                                    labelText: AppStrings.mobileNumber.tr(),
+                                    errorText: snapshot.data),
+                              );
+                            },
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -248,7 +260,8 @@ class _RegisterViewState extends State<RegisterView> {
                       Navigator.of(context).pop();
                     },
                     child: Text(AppStrings.haveAccount,
-                        style: Theme.of(context).textTheme.subtitle2).tr(),
+                            style: Theme.of(context).textTheme.subtitle2)
+                        .tr(),
                   ),
                 )
               ],

@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:section2/app/di.dart';
 import 'package:section2/presentation/forgot_password/forgot_password.dart';
 import 'package:section2/presentation/login/login.dart';

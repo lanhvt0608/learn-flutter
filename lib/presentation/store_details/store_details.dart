@@ -5,7 +5,7 @@ import 'package:section2/presentation/resources/color_manager.dart';
 import 'package:section2/presentation/resources/strings_manager.dart';
 import 'package:section2/presentation/resources/values_manager.dart';
 import 'package:section2/presentation/store_details/store_details_viewmodel.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class StoreDetailsView extends StatefulWidget {

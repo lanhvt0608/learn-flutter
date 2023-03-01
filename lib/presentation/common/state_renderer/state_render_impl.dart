@@ -1,7 +1,7 @@
 import 'package:section2/data/mapper/mapper.dart';
 import 'package:section2/presentation/common/state_renderer/state_renderer.dart';
 import 'package:section2/presentation/resources/strings_manager.dart';
-import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
+import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 abstract class FlowState {
